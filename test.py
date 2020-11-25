@@ -24,7 +24,26 @@ def spotOn (sum):
     else:
         print("Less than 1!")
 
+def try_input_to_float():
+    try_again = True
+    num = 0
+    while try_again:
+        try:
+            num = float(input())
+            try_again = False
+        except:
+            print("You can only enter numbers, try again")
+    return num
 
+def try_input_operator():
+    try_again = True    
+    while try_again:
+        op = input()
+        if op == "+" or op == "-" or op == "*" or op == "/":
+            try_again = False
+            return op
+        else:
+            print("Invalid operator, try again")
 
 is_run = True
 while is_run:
@@ -32,9 +51,14 @@ while is_run:
 
     menu_choise = input()
     if menu_choise == "1":
-        nr1 = float(input("\nEnter first digit: "))
-        operator = input("Enter operator: ")
-        nr2 = float(input("Enter second digit: "))
+        print("\nEnter first digit")
+        nr1 = try_input_to_float()
+
+        print("Enter operator")
+        operator = try_input_operator()
+        
+        print("Enter second digit")
+        nr2 = try_input_to_float()
        
         if operator == "+":
             print(str(nr1) + " + " + str(nr2) + " = " + str(getSum(nr1, nr2)))
